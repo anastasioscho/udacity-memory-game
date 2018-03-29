@@ -23,7 +23,7 @@ const card8 = {
     id: 8
 };
 
-var rating = 3;
+var openCardElements = [];
 var playerMoves = 0;
 var totalSeconds = 0;
 var timer = setInterval(function () {
@@ -42,36 +42,10 @@ function pad(val) {
 }
 
 const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card1, card2, card3, card4, card5, card6, card7, card8];
-shuffle(cards);
 
-var openCardElements = [];
-
-const fragment = document.createDocumentFragment();
-
-for (i = 0; i < cards.length; i++) {
-    const card = cards[i];
-
-    const cardContainerElement = document.createElement('li');
-    cardContainerElement.className = "card-container";
-    fragment.appendChild(cardContainerElement);
-
-    const cardElement = document.createElement('div');
-    cardElement.className = "card";
-    cardElement.setAttribute('data-index', i);
-    cardContainerElement.appendChild(cardElement);
-
-    const cardFrontElement = document.createElement('div');
-    cardFrontElement.className = "card-front card-" + card.id;
-    cardElement.appendChild(cardFrontElement);
-
-    const cardBackElement = document.createElement('div');
-    cardBackElement.className = "card-back";
-    cardElement.appendChild(cardBackElement);
-}
+rebuildTheBoard();
 
 const board = document.getElementsByClassName('board')[0];
-board.appendChild(fragment);
-
 board.addEventListener('click', cardClicked);
 
 function cardClicked(evt) {
@@ -105,26 +79,10 @@ function shuffle(array) {
 function checkLastTwoOpenedCards() {
     if (openCardElements.length > 0 && openCardElements.length % 2 == 0) {
         playerMoves += 1;
-        var movesMessage = playerMoves + " move";
-        if (playerMoves > 1) {
-            movesMessage += 's';
-        }
-        const movesElement = document.getElementsByClassName('moves')[0];
-        movesElement.textContent = movesMessage;
 
-        if (playerMoves >= 20 && rating > 1) {
-            rating = 1;
-            const starsElement = document.getElementsByClassName('stars')[0];
-            if (starsElement.childElementCount > 1) {
-                starsElement.lastElementChild.remove();
-            }
-        } else if (playerMoves >= 10 && rating > 2) {
-            rating = 2;
-            const starsElement = document.getElementsByClassName('stars')[0];
-            if (starsElement.childElementCount > 1) {
-                starsElement.lastElementChild.remove();
-            }
-        }
+        updatePlayerMoves();
+        updateStars();
+
         const lastCardElement = openCardElements[openCardElements.length - 1];
         const preLastCardElement = openCardElements[openCardElements.length - 2];
 
@@ -163,4 +121,74 @@ function checkIfWon() {
         console.log('The player won!');
         clearInterval(timer);
     }
+}
+
+function rebuildTheBoard() {
+    const board = document.getElementsByClassName('board')[0];
+
+    while (board.firstElementChild) {
+        board.firstElementChild.remove();
+    }
+
+    const fragment = document.createDocumentFragment();
+
+    for (i = 0; i < cards.length; i++) {
+        const card = cards[i];
+
+        const cardContainerElement = document.createElement('li');
+        cardContainerElement.className = "card-container";
+        fragment.appendChild(cardContainerElement);
+
+        const cardElement = document.createElement('div');
+        cardElement.className = "card";
+        cardElement.setAttribute('data-index', i);
+        cardContainerElement.appendChild(cardElement);
+
+        const cardFrontElement = document.createElement('div');
+        cardFrontElement.className = "card-front card-" + card.id;
+        cardElement.appendChild(cardFrontElement);
+
+        const cardBackElement = document.createElement('div');
+        cardBackElement.className = "card-back";
+        cardElement.appendChild(cardBackElement);
+    }
+
+    board.appendChild(fragment);
+}
+
+function rebuildTheStars() {
+    const starElements = document.getElementsByClassName('stars')[0];
+
+    while (starElements.firstElementChild) {
+        starElements.firstElementChild.remove();
+    }
+
+    const fragment = document.createDocumentFragment();
+
+    for (i = 0; i < 3; i++) {
+        const starElement = document.createElement('li');
+        fragment.appendChild(starElement);
+
+        const starImageElement = document.createElement('i');
+        starImageElement.className = "fa fa-star";
+        starElement.appendChild(starImageElement);
+    }
+
+    starElements.appendChild(fragment);
+}
+
+function updateStars() {
+    const starsElement = document.getElementsByClassName('stars')[0];
+    if (playerMoves == 10 || playerMoves == 20) {
+        starsElement.lastElementChild.remove();
+    }
+}
+
+function updatePlayerMoves() {
+    var movesMessage = playerMoves + " move";
+    if (playerMoves > 1) {
+        movesMessage += 's';
+    }
+    const movesElement = document.getElementsByClassName('moves')[0];
+    movesElement.textContent = movesMessage;
 }
