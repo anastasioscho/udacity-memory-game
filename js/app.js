@@ -24,6 +24,20 @@ const card8 = {
 };
 
 var playerMoves = 0;
+var totalSeconds = 0;
+var timer = setInterval(function () {
+    totalSeconds += 1;
+    console.log(pad(parseInt(totalSeconds / 60)) + ':' + pad(totalSeconds % 60));
+}, 1000);
+
+function pad(val) {
+    var valString = val + "";
+    if (valString.length < 2) {
+        return "0" + valString;
+    } else {
+        return valString;
+    }
+}
 
 const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card1, card2, card3, card4, card5, card6, card7, card8];
 shuffle(cards);
@@ -116,5 +130,6 @@ function checkLastTwoOpenedCards() {
 function checkIfWon() {
     if (openCardElements.length === cards.length) {
         console.log('The player won!');
+        clearInterval(timer);
     }
 }
