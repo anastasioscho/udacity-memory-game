@@ -119,7 +119,10 @@ function checkLastTwoOpenedCards() {
         const preLastCard = cards[preLastCardElementIndex];
 
         if (lastCard === preLastCard) {
-            console.log('The last two cards are the same.');
+            lastCardElement.classList.remove('flipped');
+            preLastCardElement.classList.remove('flipped');
+            lastCardElement.classList.add('jello-horizontal');
+            preLastCardElement.classList.add('jello-horizontal');
             checkIfWon();
         } else {
             openCardElements.pop();
