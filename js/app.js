@@ -43,7 +43,7 @@ function pad(val) {
 
 const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card1, card2, card3, card4, card5, card6, card7, card8];
 
-rebuildTheBoard();
+restartGame();
 
 const board = document.getElementsByClassName('board')[0];
 board.addEventListener('click', cardClicked);
@@ -121,6 +121,21 @@ function checkIfWon() {
         console.log('The player won!');
         clearInterval(timer);
     }
+}
+
+const restartElement = document.getElementsByClassName('restart')[0];
+restartElement.addEventListener('click', function () {
+    restartGame();
+});
+
+function restartGame() {
+    totalSeconds = 0;
+    playerMoves = 0;
+    openCardElements = [];
+    shuffle(cards);
+    updatePlayerMoves();
+    rebuildTheBoard();
+    rebuildTheStars();
 }
 
 function rebuildTheBoard() {
