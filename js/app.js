@@ -30,13 +30,16 @@ var openCardElements = [];
 
 const fragment = document.createDocumentFragment();
 
-for (const card of cards) {
+for (i = 0; i < cards.length; i++) {
+    const card = cards[i];
+
     const cardContainerElement = document.createElement('li');
     cardContainerElement.className = "card-container";
     fragment.appendChild(cardContainerElement);
 
     const cardElement = document.createElement('div');
     cardElement.className = "card";
+    cardElement.setAttribute('data-index', i);
     cardContainerElement.appendChild(cardElement);
 
     const cardFrontElement = document.createElement('div');
@@ -59,6 +62,7 @@ function cardClicked(evt) {
         if (!cardElement.classList.contains('flipped')) {
             cardElement.classList.toggle('flipped');
             openCardElements.push(cardElement);
+            checkLastTwoOpenedCards();
         }
     }
 }
@@ -77,4 +81,23 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+function checkLastTwoOpenedCards() {
+    if (openCardElements.length > 0 && openCardElements.length % 2 == 0) {
+        const lastCardElement = openCardElements[openCardElements.length - 1];
+        const preLastCardElement = openCardElements[openCardElements.length - 2];
+
+        const lastCardElementIndex = lastCardElement.getAttribute('data-index');
+        const preLastCardElementIndex = preLastCardElement.getAttribute('data-index');
+
+        const lastCard = cards[lastCardElementIndex];
+        const preLastCard = cards[preLastCardElementIndex];
+
+        if (lastCard === preLastCard) {
+            console.log('The last two cards are the same.');
+        } else {
+            console.log('The last two cards are NOT the same.');
+        }
+    }
 }
