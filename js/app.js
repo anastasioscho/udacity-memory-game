@@ -26,6 +26,8 @@ const card8 = {
 const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card1, card2, card3, card4, card5, card6, card7, card8];
 shuffle(cards);
 
+var openCardElements = [];
+
 const fragment = document.createDocumentFragment();
 
 for (const card of cards) {
@@ -52,11 +54,11 @@ board.appendChild(fragment);
 board.addEventListener('click', cardClicked);
 
 function cardClicked(evt) {
-    console.log(evt.target.className);
     if (evt.target.classList.contains('card-front') || evt.target.classList.contains('card-back')) {
-        const card = evt.target.parentElement;
-        if (!card.classList.contains('flipped')) {
-            card.classList.toggle('flipped');
+        const cardElement = evt.target.parentElement;
+        if (!cardElement.classList.contains('flipped')) {
+            cardElement.classList.toggle('flipped');
+            openCardElements.push(cardElement);
         }
     }
 }
