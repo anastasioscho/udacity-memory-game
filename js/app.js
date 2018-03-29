@@ -113,8 +113,16 @@ function checkLastTwoOpenedCards() {
 
         if (playerMoves >= 20 && rating > 1) {
             rating = 1;
+            const starsElement = document.getElementsByClassName('stars')[0];
+            if (starsElement.childElementCount > 1) {
+                starsElement.lastElementChild.remove();
+            }
         } else if (playerMoves >= 10 && rating > 2) {
             rating = 2;
+            const starsElement = document.getElementsByClassName('stars')[0];
+            if (starsElement.childElementCount > 1) {
+                starsElement.lastElementChild.remove();
+            }
         }
         const lastCardElement = openCardElements[openCardElements.length - 1];
         const preLastCardElement = openCardElements[openCardElements.length - 2];
