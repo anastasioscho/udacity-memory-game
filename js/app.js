@@ -127,9 +127,16 @@ function checkLastTwoOpenedCards() {
         } else {
             openCardElements.pop();
             openCardElements.pop();
+            lastCardElement.classList.add('shake-horizontal');
+            preLastCardElement.classList.add('shake-horizontal');
             setTimeout(function () {
-                lastCardElement.classList.toggle('flipped');
-                preLastCardElement.classList.toggle('flipped');
+                lastCardElement.classList.remove('shake-horizontal');
+                preLastCardElement.classList.remove('shake-horizontal');
+
+                setTimeout(function () {
+                    lastCardElement.classList.remove('flipped');
+                    preLastCardElement.classList.remove('flipped');
+                }, 100);
             }, 1000);
         }
     }
