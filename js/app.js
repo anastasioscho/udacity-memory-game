@@ -104,6 +104,13 @@ function shuffle(array) {
 function checkLastTwoOpenedCards() {
     if (openCardElements.length > 0 && openCardElements.length % 2 == 0) {
         playerMoves += 1;
+        var movesMessage = playerMoves + " move";
+        if (playerMoves > 1) {
+            movesMessage += 's';
+        }
+        const movesElement = document.getElementsByClassName('moves')[0];
+        movesElement.textContent = movesMessage;
+
         if (playerMoves >= 20 && rating > 1) {
             rating = 1;
         } else if (playerMoves >= 10 && rating > 2) {
