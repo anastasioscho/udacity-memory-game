@@ -23,6 +23,7 @@ const card8 = {
     id: 8
 };
 
+var rating = 3;
 var playerMoves = 0;
 var totalSeconds = 0;
 var timer = setInterval(function () {
@@ -103,7 +104,11 @@ function shuffle(array) {
 function checkLastTwoOpenedCards() {
     if (openCardElements.length > 0 && openCardElements.length % 2 == 0) {
         playerMoves += 1;
-        console.log('Player moves: ' + playerMoves);
+        if (playerMoves >= 20 && rating > 1) {
+            rating = 1;
+        } else if (playerMoves >= 10 && rating > 2) {
+            rating = 2;
+        }
         const lastCardElement = openCardElements[openCardElements.length - 1];
         const preLastCardElement = openCardElements[openCardElements.length - 2];
 
