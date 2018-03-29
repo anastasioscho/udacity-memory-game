@@ -62,6 +62,7 @@ function cardClicked(evt) {
         if (!cardElement.classList.contains('flipped')) {
             cardElement.classList.toggle('flipped');
             openCardElements.push(cardElement);
+
             checkLastTwoOpenedCards();
         }
     }
@@ -97,7 +98,13 @@ function checkLastTwoOpenedCards() {
         if (lastCard === preLastCard) {
             console.log('The last two cards are the same.');
         } else {
-            console.log('The last two cards are NOT the same.');
+            openCardElements.pop();
+            openCardElements.pop();
+            setTimeout(function () {
+                lastCardElement.classList.toggle('flipped');
+                preLastCardElement.classList.toggle('flipped');
+                console.log(openCardElements.length);
+            }, 1000);
         }
     }
 }
