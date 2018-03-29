@@ -26,11 +26,7 @@ const card8 = {
 var openCardElements = [];
 var playerMoves = 0;
 var totalSeconds = 0;
-var timer = setInterval(function () {
-    totalSeconds += 1;
-    const timerElement = document.getElementsByClassName('timer')[0];
-    timerElement.textContent = pad(parseInt(totalSeconds / 60)) + ':' + pad(totalSeconds % 60);
-}, 1000);
+var timer;
 
 function pad(val) {
     var valString = val + "";
@@ -83,6 +79,10 @@ function checkLastTwoOpenedCards() {
         updatePlayerMoves();
         updateStars();
 
+        if (totalSeconds == 0) {
+            restartTimer();
+        }
+
         const lastCardElement = openCardElements[openCardElements.length - 1];
         const preLastCardElement = openCardElements[openCardElements.length - 2];
 
@@ -129,7 +129,7 @@ restartElement.addEventListener('click', function () {
 });
 
 function restartGame() {
-    totalSeconds = 0;
+    resetTimer();
     playerMoves = 0;
     openCardElements = [];
     shuffle(cards);
@@ -206,4 +206,22 @@ function updatePlayerMoves() {
     }
     const movesElement = document.getElementsByClassName('moves')[0];
     movesElement.textContent = movesMessage;
+}
+
+function resetTimer() {
+    clearInterval(timer);
+    totalSeconds = 0;
+
+    const timerElement = document.getElementsByClassName('timer')[0];
+    timerElement.textContent = '00:00 seconds';
+}
+
+function restartTimer() {
+    resetTimer();
+
+    timer = setInterval(function () {
+        totalSeconds += 1;
+        const timerElement = document.getElementsByClassName('timer')[0];
+        timerElement.textContent = pad(parseInt(totalSeconds / 60)) + ':' + pad(totalSeconds % 60) + ' seconds';
+    }, 1000);
 }
