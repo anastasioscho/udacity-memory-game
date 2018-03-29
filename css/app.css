@@ -1,0 +1,63 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.board {
+    width: 660px;
+    height: 680px;
+    padding: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: green;
+    list-style-type: none;
+}
+
+.board .card-container {
+    height: 125px;
+    width: 125px;
+    position: relative;
+}
+
+.board .card-container .card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.board .card-container .card .card-front,
+.board .card-container .card .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.board .card-container .card .card-front {
+    background: red;
+}
+
+.board .card-container .card .card-back {
+    background: blue;
+}
