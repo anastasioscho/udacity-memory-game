@@ -55,7 +55,9 @@ function cardClicked(evt) {
     console.log(evt.target.className);
     if (evt.target.classList.contains('card-front') || evt.target.classList.contains('card-back')) {
         const card = evt.target.parentElement;
-        card.classList.toggle('flipped');
+        if (!card.classList.contains('flipped')) {
+            card.classList.toggle('flipped');
+        }
     }
 }
 
