@@ -23,6 +23,8 @@ const card8 = {
     id: 8
 };
 
+var playerMoves = 0;
+
 const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card1, card2, card3, card4, card5, card6, card7, card8];
 shuffle(cards);
 
@@ -86,6 +88,8 @@ function shuffle(array) {
 
 function checkLastTwoOpenedCards() {
     if (openCardElements.length > 0 && openCardElements.length % 2 == 0) {
+        playerMoves += 1;
+        console.log('Player moves: ' + playerMoves);
         const lastCardElement = openCardElements[openCardElements.length - 1];
         const preLastCardElement = openCardElements[openCardElements.length - 2];
 
