@@ -6,16 +6,8 @@ const card5 = {id: 5};
 const card6 = {id: 6};
 const card7 = {id: 7};
 const card8 = {id: 8};
-const card9 = {id: 9};
-const card10 = {id: 10};
-const card11 = {id: 11};
-const card12 = {id: 12};
-const card13 = {id: 13};
-const card14 = {id: 14};
-const card15 = {id: 15};
-const card16 = {id: 16};
 
-const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12, card13, card14, card15, card16];
+const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card1, card2, card3, card4, card5, card6, card7, card8];
 
 const fragment = document.createDocumentFragment();
 
