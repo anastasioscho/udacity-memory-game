@@ -292,3 +292,7 @@ body {
     margin-left: auto;
     cursor: pointer;
 }
+
+.score-panel .timer {
+    margin-left: 10px;
+}

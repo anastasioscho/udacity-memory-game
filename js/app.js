@@ -28,7 +28,8 @@ var playerMoves = 0;
 var totalSeconds = 0;
 var timer = setInterval(function () {
     totalSeconds += 1;
-    console.log(pad(parseInt(totalSeconds / 60)) + ':' + pad(totalSeconds % 60));
+    const timerElement = document.getElementsByClassName('timer')[0];
+    timerElement.textContent = pad(parseInt(totalSeconds / 60)) + ':' + pad(totalSeconds % 60);
 }, 1000);
 
 function pad(val) {
