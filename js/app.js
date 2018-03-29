@@ -97,14 +97,20 @@ function checkLastTwoOpenedCards() {
 
         if (lastCard === preLastCard) {
             console.log('The last two cards are the same.');
+            checkIfWon();
         } else {
             openCardElements.pop();
             openCardElements.pop();
             setTimeout(function () {
                 lastCardElement.classList.toggle('flipped');
                 preLastCardElement.classList.toggle('flipped');
-                console.log(openCardElements.length);
             }, 1000);
         }
+    }
+}
+
+function checkIfWon() {
+    if (openCardElements.length === cards.length) {
+        console.log('The player won!');
     }
 }
