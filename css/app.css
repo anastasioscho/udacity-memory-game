@@ -59,7 +59,6 @@ body {
 }
 
 .board .card-container .card .card-front {
-    background: red;
     transform: rotateY( 180deg);
 }
 
@@ -69,4 +68,44 @@ body {
 
 .card.flipped {
     transform: rotateY( 180deg);
+}
+
+.board .card-container .card .card-front.card-1 {
+    background: url(../img/card-1.jpeg) no-repeat;
+    background-size: cover;
+}
+
+.board .card-container .card .card-front.card-2 {
+    background: url(../img/card-2.jpeg) no-repeat;
+    background-size: cover;
+}
+
+.board .card-container .card .card-front.card-3 {
+    background: url(../img/card-3.jpeg) no-repeat;
+    background-size: cover;
+}
+
+.board .card-container .card .card-front.card-4 {
+    background: url(../img/card-4.jpeg) no-repeat;
+    background-size: cover;
+}
+
+.board .card-container .card .card-front.card-5 {
+    background: url(../img/card-5.jpeg) no-repeat;
+    background-size: cover;
+}
+
+.board .card-container .card .card-front.card-6 {
+    background: url(../img/card-6.jpeg) no-repeat;
+    background-size: cover;
+}
+
+.board .card-container .card .card-front.card-7 {
+    background: url(../img/card-7.jpeg) no-repeat;
+    background-size: cover;
+}
+
+.board .card-container .card .card-front.card-8 {
+    background: url(../img/card-8.jpeg) no-repeat;
+    background-size: cover;
 }

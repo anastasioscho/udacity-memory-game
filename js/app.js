@@ -20,21 +20,21 @@ const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card9, ca
 const fragment = document.createDocumentFragment();
 
 for (const card of cards) {
-    const cardContainer = document.createElement('li');
-    cardContainer.className = "card-container";
-    fragment.appendChild(cardContainer);
+    const cardContainerElement = document.createElement('li');
+    cardContainerElement.className = "card-container";
+    fragment.appendChild(cardContainerElement);
 
-    const card = document.createElement('div');
-    card.className = "card";
-    cardContainer.appendChild(card);
+    const cardElement = document.createElement('div');
+    cardElement.className = "card";
+    cardContainerElement.appendChild(cardElement);
 
-    const cardFront = document.createElement('div');
-    cardFront.className = "card-front";
-    card.appendChild(cardFront);
+    const cardFrontElement = document.createElement('div');
+    cardFrontElement.className = "card-front card-" + card.id;
+    cardElement.appendChild(cardFrontElement);
 
-    const cardBack = document.createElement('div');
-    cardBack.className = "card-back";
-    card.appendChild(cardBack);
+    const cardBackElement = document.createElement('div');
+    cardBackElement.className = "card-back";
+    cardElement.appendChild(cardBackElement);
 }
 
 const board = document.getElementsByClassName('board')[0];
@@ -43,7 +43,8 @@ board.appendChild(fragment);
 board.addEventListener('click', cardClicked);
 
 function cardClicked(evt) {
-    if (evt.target.className === 'card-front' || evt.target.className === 'card-back') {
+    console.log(evt.target.className);
+    if (evt.target.classList.contains('card-front') || evt.target.classList.contains('card-back')) {
         const card = evt.target.parentElement;
         card.classList.toggle('flipped');
     }
