@@ -16,6 +16,7 @@ body {
     padding: 0;
     background: url(../img/bg.jpg) no-repeat;
     background-size: cover;
+    color: white;
 }
 
 .container {
@@ -265,4 +266,29 @@ body {
 .shake-horizontal {
     -webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
     animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    display: flex;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    padding: 0;
+    display: flex;
+    margin: 0 10px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+}
+
+.score-panel .restart {
+    margin-left: auto;
+    cursor: pointer;
 }
