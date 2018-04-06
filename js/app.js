@@ -1,28 +1,3 @@
-const card1 = {
-    id: 1
-};
-const card2 = {
-    id: 2
-};
-const card3 = {
-    id: 3
-};
-const card4 = {
-    id: 4
-};
-const card5 = {
-    id: 5
-};
-const card6 = {
-    id: 6
-};
-const card7 = {
-    id: 7
-};
-const card8 = {
-    id: 8
-};
-
 var openCardElements = [];
 var playerMoves = 0;
 var totalSeconds = 0;
@@ -37,7 +12,7 @@ function pad(val) {
     }
 }
 
-const cards = [card1, card2, card3, card4, card5, card6, card7, card8, card1, card2, card3, card4, card5, card6, card7, card8];
+const cards = ["card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8", "card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8"];
 
 restartGame();
 
@@ -163,7 +138,7 @@ function rebuildTheBoard() {
         cardContainerElement.appendChild(cardElement);
 
         const cardFrontElement = document.createElement('div');
-        cardFrontElement.className = "card-front card-" + card.id;
+        cardFrontElement.className = "card-front " + card;
         cardElement.appendChild(cardFrontElement);
 
         const cardBackElement = document.createElement('div');
