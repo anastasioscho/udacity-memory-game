@@ -116,8 +116,8 @@ function checkLastTwoOpenedCards() {
 
 function checkIfWon() {
     if (openCardElements.length === cards.length) {
-        console.log('The player won!');
         clearInterval(timer);
+        toggleModal();
     }
 }
 
@@ -125,6 +125,11 @@ const restartElement = document.getElementsByClassName('restart')[0];
 restartElement.addEventListener('click', function () {
     restartGame();
 });
+
+function toggleModal() {
+    const modal = document.querySelector(".modal");
+    modal.classList.toggle("show-modal");
+}
 
 function restartGame() {
     resetTimer();
