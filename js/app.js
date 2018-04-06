@@ -79,7 +79,7 @@ function checkLastTwoOpenedCards() {
         updatePlayerMoves();
         updateStars();
 
-        if (totalSeconds == 0) {
+        if (playerMoves == 1) {
             restartTimer();
         }
 
