@@ -93,8 +93,6 @@ function checkLastTwoOpenedCards() {
         const preLastCard = cards[preLastCardElementIndex];
 
         if (lastCard === preLastCard) {
-            lastCardElement.classList.remove('flipped');
-            preLastCardElement.classList.remove('flipped');
             lastCardElement.classList.add('jello-horizontal');
             preLastCardElement.classList.add('jello-horizontal');
             checkIfWon();
