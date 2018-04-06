@@ -92,9 +92,14 @@ function checkLastTwoOpenedCards() {
 function checkIfWon() {
     if (openCardElements.length === cards.length) {
         clearInterval(timer);
+
         const elapsedTimeElement = document.querySelector("#elapsed-time");
         const timerElement = document.querySelector(".timer");
         elapsedTimeElement.textContent = timerElement.textContent;
+
+        const totalMovesElement = document.querySelector("#total-moves");
+        totalMovesElement.textContent = playerMoves;
+
         toggleModal();
     }
 }
