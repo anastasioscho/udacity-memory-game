@@ -138,7 +138,7 @@ function restartGame() {
     shuffle(cards);
     updatePlayerMoves();
     rebuildTheBoard();
-    rebuildTheStars();
+    updateStars();
 }
 
 function rebuildTheBoard() {
@@ -174,31 +174,17 @@ function rebuildTheBoard() {
     board.appendChild(fragment);
 }
 
-function rebuildTheStars() {
-    const starElements = document.getElementsByClassName('stars')[0];
-
-    while (starElements.firstElementChild) {
-        starElements.firstElementChild.remove();
-    }
-
-    const fragment = document.createDocumentFragment();
-
-    for (i = 0; i < 3; i++) {
-        const starElement = document.createElement('li');
-        fragment.appendChild(starElement);
-
-        const starImageElement = document.createElement('i');
-        starImageElement.className = "fa fa-star";
-        starElement.appendChild(starImageElement);
-    }
-
-    starElements.appendChild(fragment);
-}
-
 function updateStars() {
-    const starsElement = document.getElementsByClassName('stars')[0];
-    if (playerMoves == 10 || playerMoves == 20) {
-        starsElement.lastElementChild.remove();
+    const starsElement = document.querySelector('.stars');
+
+    if (playerMoves == 0) {
+        starsElement.children[0].style.display = "list-item";
+        starsElement.children[1].style.display = "list-item";
+    }
+    else if (playerMoves == 10) {
+        starsElement.children[0].style.display = "none";
+    } else if (playerMoves == 20) {
+        starsElement.children[1].style.display = "none";
     }
 }
 
