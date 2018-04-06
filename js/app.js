@@ -100,6 +100,15 @@ function checkIfWon() {
         const totalMovesElement = document.querySelector("#total-moves");
         totalMovesElement.textContent = playerMoves;
 
+        const firstStarElement = document.querySelector("#first-star");
+        const secondStarElement = document.querySelector("#second-star");
+        if (playerMoves > 19) {
+            firstStarElement.style.display = "none";
+            secondStarElement.style.display = "none";
+        } else if (playerMoves > 9) {
+            firstStarElement.style.display = "none";
+        }
+
         toggleModal();
     }
 }
@@ -163,8 +172,7 @@ function updateStars() {
     if (playerMoves == 0) {
         starsElement.children[0].style.display = "list-item";
         starsElement.children[1].style.display = "list-item";
-    }
-    else if (playerMoves == 10) {
+    } else if (playerMoves == 10) {
         starsElement.children[0].style.display = "none";
     } else if (playerMoves == 20) {
         starsElement.children[1].style.display = "none";
