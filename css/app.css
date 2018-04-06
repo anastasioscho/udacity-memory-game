@@ -14,7 +14,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: url(../img/bg.jpg) no-repeat;
+    background: url(../img/bg.jpg);
     background-size: cover;
     color: white;
 }
@@ -27,9 +27,8 @@ body {
 }
 
 .board {
-    width: 660px;
-    height: 680px;
-    padding: 32px;
+    width: 85%;
+    padding: 16px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -39,10 +38,11 @@ body {
 }
 
 .board .card-container {
-    height: 125px;
-    width: 125px;
+    height: 50px;
+    width: 50px;
     position: relative;
     perspective: 800px;
+    margin: 5px;
 }
 
 .board .card-container .card {
@@ -274,7 +274,7 @@ body {
 
 .score-panel {
     display: flex;
-    width: 345px;
+    width: 85%;
     margin-bottom: 10px;
 }
 
@@ -301,7 +301,7 @@ body {
  * Styles for the Modal
  */
 
- .modal {
+.modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -324,7 +324,7 @@ body {
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 1.2rem 1.5rem;
-    width: 40%;
+    width: 85%;
     border-radius: 0.5rem;
 }
 
@@ -352,4 +352,43 @@ body {
 
 .modal p {
     font-size: 1.2rem;
+}
+
+@media (min-width: 391px) {
+    .board .card-container {
+        height: 65px;
+        width: 65px;
+    }
+}
+
+@media (min-width: 479px) {
+    .board .card-container {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+@media (min-width: 568px) {
+    .board .card-container {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media (min-width: 685px) {
+    .board {
+        width: 660px;
+        height: 680px;
+        padding: 32px;
+    }
+    .board .card-container {
+        height: 125px;
+        width: 125px;
+    }
+    .score-panel {
+        width: 345px;
+    }
+    .modal-content {
+        width: 550px;
+    }
 }
