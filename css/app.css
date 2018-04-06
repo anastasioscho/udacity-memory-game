@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 *,
@@ -28,7 +29,7 @@ body {
 
 .board {
     width: 85%;
-    padding: 16px;
+    padding: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -38,11 +39,11 @@ body {
 }
 
 .board .card-container {
-    height: 50px;
-    width: 50px;
+    height: 3.125rem;
+    width: 3.125rem;
     position: relative;
-    perspective: 800px;
-    margin: 5px;
+    perspective: 50rem;
+    margin: 0.3125rem;
 }
 
 .board .card-container .card {
@@ -51,8 +52,8 @@ body {
     position: absolute;
     transform-style: preserve-3d;
     transition: transform 0.5s;
-    border-radius: 8px;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: 0.3125rem 0.125rem 1.25rem 0 rgba(46, 61, 73, 0.5);
 }
 
 .board .card-container .card .card-front,
@@ -61,11 +62,11 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 8px;
+    border-radius: 0.5rem;
 }
 
 .board .card-container .card .card-front {
-    transform: rotateY( 180deg);
+    transform: rotateY(180deg);
 }
 
 .board .card-container .card .card-back {
@@ -73,7 +74,7 @@ body {
 }
 
 .card.flipped {
-    transform: rotateY( 180deg);
+    transform: rotateY(180deg);
 }
 
 .board .card-container .card .card-front.card-1 {
@@ -215,22 +216,22 @@ body {
     30%,
     50%,
     70% {
-        -webkit-transform: translateX(-10px) rotateY(180deg);
-        transform: translateX(-10px) rotateY(180deg);
+        -webkit-transform: translateX(-0.625rem) rotateY(180deg);
+        transform: translateX(-0.625rem) rotateY(180deg);
     }
     20%,
     40%,
     60% {
-        -webkit-transform: translateX(10px) rotateY(180deg);
-        transform: translateX(10px) rotateY(180deg);
+        -webkit-transform: translateX(0.625rem) rotateY(180deg);
+        transform: translateX(0.625rem) rotateY(180deg);
     }
     80% {
-        -webkit-transform: translateX(8px) rotateY(180deg);
-        transform: translateX(8px) rotateY(180deg);
+        -webkit-transform: translateX(0.5rem) rotateY(180deg);
+        transform: translateX(0.5rem) rotateY(180deg);
     }
     90% {
-        -webkit-transform: translateX(-8px) rotateY(180deg);
-        transform: translateX(-8px) rotateY(180deg);
+        -webkit-transform: translateX(-0.5rem) rotateY(180deg);
+        transform: translateX(-0.5rem) rotateY(180deg);
     }
 }
 
@@ -244,22 +245,22 @@ body {
     30%,
     50%,
     70% {
-        -webkit-transform: translateX(-10px) rotateY(180deg);
-        transform: translateX(-10px) rotateY(180deg);
+        -webkit-transform: translateX(-0.625rem) rotateY(180deg);
+        transform: translateX(-0.625rem) rotateY(180deg);
     }
     20%,
     40%,
     60% {
-        -webkit-transform: translateX(10px) rotateY(180deg);
-        transform: translateX(10px) rotateY(180deg);
+        -webkit-transform: translateX(0.625rem) rotateY(180deg);
+        transform: translateX(0.625rem) rotateY(180deg);
     }
     80% {
-        -webkit-transform: translateX(8px) rotateY(180deg);
-        transform: translateX(8px) rotateY(180deg);
+        -webkit-transform: translateX(0.5rem) rotateY(180deg);
+        transform: translateX(0.5rem) rotateY(180deg);
     }
     90% {
-        -webkit-transform: translateX(-8px) rotateY(180deg);
-        transform: translateX(-8px) rotateY(180deg);
+        -webkit-transform: translateX(-0.5rem) rotateY(180deg);
+        transform: translateX(-0.5rem) rotateY(180deg);
     }
 }
 
@@ -275,13 +276,13 @@ body {
 .score-panel {
     display: flex;
     width: 85%;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 .score-panel .stars {
     padding: 0;
     display: flex;
-    margin: 0 10px 0 0;
+    margin: 0 0.625rem 0 0;
 }
 
 .score-panel .stars li {
@@ -294,7 +295,7 @@ body {
 }
 
 .score-panel .timer {
-    margin-left: 10px;
+    margin-left: 0.625rem;
 }
 
 /*
@@ -356,39 +357,43 @@ body {
 
 @media (min-width: 391px) {
     .board .card-container {
-        height: 65px;
-        width: 65px;
+        height: 4.063rem;
+        width: 4.063rem;
     }
 }
 
 @media (min-width: 479px) {
     .board .card-container {
-        height: 80px;
-        width: 80px;
+        height: 5rem;
+        width: 5rem;
     }
 }
 
 @media (min-width: 568px) {
     .board .card-container {
-        height: 100px;
-        width: 100px;
+        height: 6.25rem;
+        width: 6.25rem;
     }
 }
 
 @media (min-width: 685px) {
     .board {
-        width: 660px;
-        height: 680px;
-        padding: 32px;
+        width: 41.25rem;
+        height: 42.5rem;
+        padding: 2rem;
     }
     .board .card-container {
-        height: 125px;
-        width: 125px;
+        height: 7.813rem;
+        width: 7.813rem;
     }
     .score-panel {
-        width: 345px;
+        width: 21.56rem;
     }
     .modal-content {
-        width: 550px;
+        width: 34.38rem;
     }
+
+    body {
+         height: auto;
+     }
 }
