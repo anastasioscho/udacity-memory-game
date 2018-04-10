@@ -8,10 +8,10 @@ const cards = ["card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card
 document.addEventListener('DOMContentLoaded', function() {
     restartGame();
 
-    const board = document.getElementsByClassName('board')[0];
+    const board = document.querySelector('.board');
     board.addEventListener('click', cardClicked);
 
-    const restartElement = document.getElementsByClassName('restart')[0];
+    const restartElement = document.querySelector('.restart');
     restartElement.addEventListener('click', function () {
         restartGame();
     });
@@ -127,7 +127,7 @@ function restartGame() {
 }
 
 function rebuildTheBoard() {
-    const board = document.getElementsByClassName('board')[0];
+    const board = document.querySelector('.board');
 
     while (board.firstElementChild) {
         board.firstElementChild.remove();
@@ -174,7 +174,7 @@ function updateStars() {
 
 function updatePlayerMoves() {
     var movesMessage = playerMoves + " moves";
-    const movesElement = document.getElementsByClassName('moves')[0];
+    const movesElement = document.querySelector('#moves');
     movesElement.textContent = movesMessage;
 }
 
@@ -182,7 +182,7 @@ function resetTimer() {
     clearInterval(timer);
     totalSeconds = 0;
 
-    const timerElement = document.getElementsByClassName('timer')[0];
+    const timerElement = document.querySelector('.timer');
     timerElement.textContent = '0 mins 0 secs';
 }
 
@@ -191,7 +191,7 @@ function restartTimer() {
 
     timer = setInterval(function () {
         totalSeconds += 1;
-        const timerElement = document.getElementsByClassName('timer')[0];
+        const timerElement = document.querySelector('.timer');
         timerElement.textContent = parseInt(totalSeconds / 60) + ' mins ' + totalSeconds % 60 + ' secs';
     }, 1000);
 }
