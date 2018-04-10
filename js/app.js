@@ -5,7 +5,7 @@ var timer;
 
 const cards = ["card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8", "card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8"];
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     restartGame();
 
     const board = document.querySelector('.board');
