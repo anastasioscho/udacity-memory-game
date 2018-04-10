@@ -6,7 +6,7 @@ I created this game for the purposes of the [Udacity's Front-End Web Developer N
 
 - Clone the **[repo](https://github.com/anastasioscho/udacity-memory-game)** and open index.html.
 
-### How The Game Works
+## How The Game Works
 
 The game board consists of sixteen "cards" arranged in a grid. The deck is made up of eight different pairs of cards, each with different images on one side. The cards are arranged randomly on the grid with the image face down. The gameplay rules are very simple: flip over two hidden cards at a time to locate the ones that match!
 
@@ -18,7 +18,7 @@ Each turn:
 - If the cards do not match, both cards are flipped face down.
 - The game ends once all cards have been correctly matched.
 
-### Screenshots
+## Screenshots
 
 ![Starting a new game](screenshots/initial.jpeg "Starting a new game") ![A game in progress](screenshots/progress.jpeg "A game in progress") ![Winning a game](screenshots/win.jpeg "Winning a game")
 
@@ -28,7 +28,7 @@ Each turn:
 
 - <http://stackoverflow.com/a/2450976>
 
-## CSS Animations
+### CSS Animations
 
 - <http://animista.net/>
 - <https://css-tricks.com/snippets/css/keyframe-animation-syntax/>
