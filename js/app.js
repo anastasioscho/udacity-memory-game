@@ -29,93 +29,6 @@ function cardClicked(evt) {
     }
 }
 
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length,
-        temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
-
-function checkLastTwoOpenedCards() {
-    if (openCardElements.length > 0 && openCardElements.length % 2 == 0) {
-        playerMoves += 1;
-
-        updatePlayerMoves();
-        updateStars();
-
-        if (playerMoves == 1) {
-            restartTimer();
-        }
-
-        const lastCardElement = openCardElements[openCardElements.length - 1];
-        const preLastCardElement = openCardElements[openCardElements.length - 2];
-
-        const lastCardElementIndex = lastCardElement.getAttribute('data-index');
-        const preLastCardElementIndex = preLastCardElement.getAttribute('data-index');
-
-        const lastCard = cards[lastCardElementIndex];
-        const preLastCard = cards[preLastCardElementIndex];
-
-        if (lastCard === preLastCard) {
-            lastCardElement.classList.add('jello-horizontal');
-            preLastCardElement.classList.add('jello-horizontal');
-            checkIfWon();
-        } else {
-            openCardElements.pop();
-            openCardElements.pop();
-            lastCardElement.classList.add('shake-horizontal');
-            preLastCardElement.classList.add('shake-horizontal');
-            setTimeout(function () {
-                lastCardElement.classList.remove('shake-horizontal');
-                preLastCardElement.classList.remove('shake-horizontal');
-
-                setTimeout(function () {
-                    lastCardElement.classList.remove('flipped');
-                    preLastCardElement.classList.remove('flipped');
-                }, 100);
-            }, 1000);
-        }
-    }
-}
-
-function checkIfWon() {
-    if (openCardElements.length === cards.length) {
-        clearInterval(timer);
-
-        const elapsedTimeElement = document.querySelector("#elapsed-time");
-        const timerElement = document.querySelector(".timer");
-        elapsedTimeElement.textContent = timerElement.textContent;
-
-        const totalMovesElement = document.querySelector("#total-moves");
-        totalMovesElement.textContent = playerMoves;
-
-        const firstStarElement = document.querySelector("#first-star");
-        const secondStarElement = document.querySelector("#second-star");
-        if (playerMoves > 19) {
-            firstStarElement.style.display = "none";
-            secondStarElement.style.display = "none";
-        } else if (playerMoves > 9) {
-            firstStarElement.style.display = "none";
-        }
-
-        toggleModal();
-    }
-}
-
-function toggleModal() {
-    const modal = document.querySelector(".modal");
-    modal.classList.toggle("show-modal");
-}
-
 function restartGame() {
     resetTimer();
     playerMoves = 0;
@@ -194,4 +107,91 @@ function restartTimer() {
         const timerElement = document.querySelector('.timer');
         timerElement.textContent = parseInt(totalSeconds / 60) + ' mins ' + totalSeconds % 60 + ' secs';
     }, 1000);
+}
+
+function checkLastTwoOpenedCards() {
+    if (openCardElements.length > 0 && openCardElements.length % 2 == 0) {
+        playerMoves += 1;
+
+        updatePlayerMoves();
+        updateStars();
+
+        if (playerMoves == 1) {
+            restartTimer();
+        }
+
+        const lastCardElement = openCardElements[openCardElements.length - 1];
+        const preLastCardElement = openCardElements[openCardElements.length - 2];
+
+        const lastCardElementIndex = lastCardElement.getAttribute('data-index');
+        const preLastCardElementIndex = preLastCardElement.getAttribute('data-index');
+
+        const lastCard = cards[lastCardElementIndex];
+        const preLastCard = cards[preLastCardElementIndex];
+
+        if (lastCard === preLastCard) {
+            lastCardElement.classList.add('jello-horizontal');
+            preLastCardElement.classList.add('jello-horizontal');
+            checkIfWon();
+        } else {
+            openCardElements.pop();
+            openCardElements.pop();
+            lastCardElement.classList.add('shake-horizontal');
+            preLastCardElement.classList.add('shake-horizontal');
+            setTimeout(function () {
+                lastCardElement.classList.remove('shake-horizontal');
+                preLastCardElement.classList.remove('shake-horizontal');
+
+                setTimeout(function () {
+                    lastCardElement.classList.remove('flipped');
+                    preLastCardElement.classList.remove('flipped');
+                }, 100);
+            }, 1000);
+        }
+    }
+}
+
+function checkIfWon() {
+    if (openCardElements.length === cards.length) {
+        clearInterval(timer);
+
+        const elapsedTimeElement = document.querySelector("#elapsed-time");
+        const timerElement = document.querySelector(".timer");
+        elapsedTimeElement.textContent = timerElement.textContent;
+
+        const totalMovesElement = document.querySelector("#total-moves");
+        totalMovesElement.textContent = playerMoves;
+
+        const firstStarElement = document.querySelector("#first-star");
+        const secondStarElement = document.querySelector("#second-star");
+        if (playerMoves > 19) {
+            firstStarElement.style.display = "none";
+            secondStarElement.style.display = "none";
+        } else if (playerMoves > 9) {
+            firstStarElement.style.display = "none";
+        }
+
+        toggleModal();
+    }
+}
+
+function toggleModal() {
+    const modal = document.querySelector(".modal");
+    modal.classList.toggle("show-modal");
+}
+
+// Shuffle function from http://stackoverflow.com/a/2450976
+function shuffle(array) {
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
 }
