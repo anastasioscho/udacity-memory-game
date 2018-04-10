@@ -20,6 +20,10 @@ body {
     color: white;
 }
 
+.fa-star {
+    color: rgb(243, 210, 29);
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -277,12 +281,13 @@ body {
     display: flex;
     width: 85%;
     margin-bottom: 0.625rem;
+    font-size: 1.2rem;
 }
 
 .score-panel .stars {
     padding: 0;
     display: flex;
-    margin: 0 0.625rem 0 0;
+    margin: 0 0.5rem 0 0;
 }
 
 .score-panel .stars li {
@@ -295,7 +300,7 @@ body {
 }
 
 .score-panel .timer {
-    margin-left: 0.625rem;
+    margin-left: 1rem;
 }
 
 /*
@@ -373,6 +378,15 @@ body {
     .board .card-container {
         height: 6.25rem;
         width: 6.25rem;
+    }
+
+    header h1 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .score-panel {
+        font-size: 1.4rem;
     }
 }
 

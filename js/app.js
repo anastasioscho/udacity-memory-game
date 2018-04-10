@@ -3,15 +3,6 @@ var playerMoves = 0;
 var totalSeconds = 0;
 var timer;
 
-function pad(val) {
-    var valString = val + "";
-    if (valString.length < 2) {
-        return "0" + valString;
-    } else {
-        return valString;
-    }
-}
-
 const cards = ["card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8", "card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8"];
 
 restartGame();
@@ -180,10 +171,7 @@ function updateStars() {
 }
 
 function updatePlayerMoves() {
-    var movesMessage = playerMoves + " move";
-    if (playerMoves > 1) {
-        movesMessage += 's';
-    }
+    var movesMessage = playerMoves + " moves";
     const movesElement = document.getElementsByClassName('moves')[0];
     movesElement.textContent = movesMessage;
 }
@@ -193,7 +181,7 @@ function resetTimer() {
     totalSeconds = 0;
 
     const timerElement = document.getElementsByClassName('timer')[0];
-    timerElement.textContent = '00:00 seconds';
+    timerElement.textContent = '0 mins 0 secs';
 }
 
 function restartTimer() {
@@ -202,6 +190,6 @@ function restartTimer() {
     timer = setInterval(function () {
         totalSeconds += 1;
         const timerElement = document.getElementsByClassName('timer')[0];
-        timerElement.textContent = pad(parseInt(totalSeconds / 60)) + ':' + pad(totalSeconds % 60) + ' seconds';
+        timerElement.textContent = parseInt(totalSeconds / 60) + ' mins ' + totalSeconds % 60 + ' secs';
     }, 1000);
 }
