@@ -4,7 +4,7 @@ I created this game for the purposes of the [Udacity's Front-End Web Developer N
 
 ## How to Load the game
 
-- Clone the **[repo](https://github.com/anastasioscho/memory-game.git)** and open index.html.
+- Clone the **[repo](https://github.com/anastasioscho/udacity-memory-game)** and open index.html.
 
 ### How The Game Works
 
