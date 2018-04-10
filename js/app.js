@@ -5,10 +5,17 @@ var timer;
 
 const cards = ["card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8", "card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8"];
 
-restartGame();
+document.addEventListener('DOMContentLoaded', function() {
+    restartGame();
 
-const board = document.getElementsByClassName('board')[0];
-board.addEventListener('click', cardClicked);
+    const board = document.getElementsByClassName('board')[0];
+    board.addEventListener('click', cardClicked);
+
+    const restartElement = document.getElementsByClassName('restart')[0];
+    restartElement.addEventListener('click', function () {
+        restartGame();
+    });
+});
 
 function cardClicked(evt) {
     if (evt.target.classList.contains('card-front') || evt.target.classList.contains('card-back')) {
@@ -103,11 +110,6 @@ function checkIfWon() {
         toggleModal();
     }
 }
-
-const restartElement = document.getElementsByClassName('restart')[0];
-restartElement.addEventListener('click', function () {
-    restartGame();
-});
 
 function toggleModal() {
     const modal = document.querySelector(".modal");
