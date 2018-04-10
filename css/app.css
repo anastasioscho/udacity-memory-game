@@ -75,6 +75,7 @@ body {
 
 .board .card-container .card .card-back {
     background: #2e3d49;
+    cursor: pointer;
 }
 
 .card.flipped {
