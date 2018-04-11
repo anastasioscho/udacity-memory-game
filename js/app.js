@@ -2,6 +2,7 @@ var openCardElements = [];
 var playerMoves = 0;
 var totalSeconds = 0;
 var timer;
+var allowSelections = true;
 
 const cards = ["card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8", "card-1", "card-2", "card-3", "card-4", "card-5", "card-6", "card-7", "card-8"];
 
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cardClicked(evt) {
-    if (evt.target.classList.contains('card-front') || evt.target.classList.contains('card-back')) {
+    if ((evt.target.classList.contains('card-front') || evt.target.classList.contains('card-back')) && allowSelections) {
         const cardElement = evt.target.parentElement;
         if (!cardElement.classList.contains('flipped')) {
             cardElement.classList.toggle('flipped');
@@ -30,6 +31,7 @@ function cardClicked(evt) {
 }
 
 function restartGame() {
+    allowSelections = true;
     resetTimer();
     playerMoves = 0;
     openCardElements = [];
@@ -111,6 +113,7 @@ function restartTimer() {
 
 function checkLastTwoOpenedCards() {
     if (openCardElements.length > 0 && openCardElements.length % 2 == 0) {
+        allowSelections = false;
         playerMoves += 1;
 
         updatePlayerMoves();
@@ -132,21 +135,28 @@ function checkLastTwoOpenedCards() {
         if (lastCard === preLastCard) {
             lastCardElement.classList.add('jello-horizontal');
             preLastCardElement.classList.add('jello-horizontal');
+            allowSelections = true;
             checkIfWon();
         } else {
             openCardElements.pop();
             openCardElements.pop();
             lastCardElement.classList.add('shake-horizontal');
             preLastCardElement.classList.add('shake-horizontal');
-            setTimeout(function () {
-                lastCardElement.classList.remove('shake-horizontal');
-                preLastCardElement.classList.remove('shake-horizontal');
-
+            var promise = new Promise(function(resolve, reject) {
                 setTimeout(function () {
-                    lastCardElement.classList.remove('flipped');
-                    preLastCardElement.classList.remove('flipped');
-                }, 100);
-            }, 1000);
+                    lastCardElement.classList.remove('shake-horizontal');
+                    preLastCardElement.classList.remove('shake-horizontal');
+                    resolve();
+    
+                    setTimeout(function () {
+                        lastCardElement.classList.remove('flipped');
+                        preLastCardElement.classList.remove('flipped');
+                    }, 100);
+                }, 1000);
+            });
+            promise.then(function() {
+                this.allowSelections = true;
+            });
         }
     }
 }
